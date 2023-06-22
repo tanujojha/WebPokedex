@@ -1,0 +1,27 @@
+.listcard{
+    width: 250px;
+    margin: 20px 0;
+    border: 1px solid gray;
+    border-radius: 20px;
+    padding-bottom: 10px;
+}
+
+.cardimgdiv{
+    /* border-radius: 50%; */
+}
+
+.cardimg{
+    width: 80%;
+}
+
+.cardbody > *{
+    text-align: center;
+    color: white;
+    /* margin-top: -40px;         */
+}
+
+.listcard:hover{
+    background-color: #27374D;
+    cursor: pointer;
+    color: white;
+}

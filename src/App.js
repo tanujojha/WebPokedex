@@ -1,23 +1,29 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
+// import ListCard from './components/listCard/listCard';
+import Navbar from './components/navbar/navbar';
+import ListPage from './pages/listPage/listPage';
+import FloatingPage from './pages/floatingPage/floatingPage';
+// import BookmarkOutlinedIcon from '@mui/icons-material/BookmarkOutlined';
+
 
 function App() {
+
+  const [searchedPoke, setSearchedPoke] = useState({});   // holds all the details of the searched pokemon
+  const [loading, setLoading] = useState(true);
+  const [hasSearched, setHasSearched] = useState(false)
+
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Navbar setSearchedPoke={setSearchedPoke} setLoading={setLoading} setHasSearched={setHasSearched}/>
+      {/* <FloatingPage searchedPoke={searchedPoke} loading={loading}/> */}
+      {/* {hasSearched ?  */}
+        {/* <FloatingPage searchedPoke={searchedPoke} loading={loading}/> : */}
+        {/* <ListPage/> */}
+        <ListPage searchedPoke={searchedPoke} loading={loading} hasSearched={hasSearched} setHasSearched={setHasSearched}/>
+      {/* } */}
     </div>
   );
 }

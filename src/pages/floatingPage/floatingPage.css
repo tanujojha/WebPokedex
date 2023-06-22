@@ -1,0 +1,76 @@
+/* FLOATING CARD */
+.fltlistcard{
+    width: 250px;
+    margin: 20px 0;
+    border: 1px solid gray;
+    border-radius: 20px;
+    padding-bottom: 10px;
+}
+
+.fltcardimg{
+    width: 80%;
+}
+
+.fltcardbody > *{
+    text-align: center;
+    color: white;
+}
+
+.fltlistcard:hover{
+    background-color: #27374D;
+    cursor: pointer;
+    color: white;
+}
+
+
+
+/* FLOATING PAGE */
+.floatingPage{
+    background-color: #2c333e;
+    width: 40%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    top: 25%;
+    left: 30%;
+    border-radius: 40px;
+    border: 1.2px solid gray;
+}
+
+.closeicon{
+    cursor: pointer;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+}
+
+
+
+/* MEDIA QUERIES */
+@media only screen and (max-width: 755px) {
+    .floatingPage {
+        width: 60%;
+        top: 20%;
+        left: 20%;
+        right: 20%;
+    }
+}
+
+
+@media only screen and (max-width: 555px) {
+    .floatingPage {
+        width: 80%;
+        top: 20%;
+        left: 10%;
+        right: 10%;
+    }
+
+    .fltlistcard{
+        width: 60%;
+        margin: 20px 0;
+        border: 1px solid gray;
+        border-radius: 20px;
+        padding-bottom: 10px;
+    }
+}
