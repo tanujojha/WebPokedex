@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import "./listCard.css";
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 function ListCard({poke}) {
 
@@ -20,15 +21,16 @@ function ListCard({poke}) {
     }, [])
 
   return (
-
-    <div className='listcard'>
-        <div className='cardimgdiv'>
-            <img className='cardimg' src={loading ? "#" : pokemon.sprites.front_default} alt="..some pokemon.."/>
+    <Link to={`/pokemon/${pokemon.id}`}>
+        <div className='listcard'>
+            <div className='cardimgdiv'>
+                <img className='cardimg' src={loading ? "#" : pokemon.sprites.front_default} alt="..some pokemon.."/>
+            </div>
+            <div className='cardbody'>
+                <h5 className='username'>{pokemon.name}</h5>
+            </div>
         </div>
-        <div className='cardbody'>
-            <h5 className='username'>{pokemon.name}</h5>
-        </div>
-    </div>
+    </Link>
 
   )
 }

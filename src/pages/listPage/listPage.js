@@ -18,7 +18,7 @@ function ListPage({searchedPoke, loading, hasSearched, setHasSearched}) {
     const [pokemons, setPokemons] = useState([]) // all pokemons consisting of url and name
 
     // Function to fetch Pokemons
-    async function getPokemons(){
+    function getPokemons(){
         const pokeUrl = `https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=20`
         axios.get(pokeUrl)
         .then((res)=>{
@@ -58,4 +58,4 @@ function ListPage({searchedPoke, loading, hasSearched, setHasSearched}) {
   )
 }
 
-export default ListPage
+export default ListPage 

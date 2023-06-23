@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import './App.css';
-// import ListCard from './components/listCard/listCard';
 import Navbar from './components/navbar/navbar';
 import ListPage from './pages/listPage/listPage';
-import FloatingPage from './pages/floatingPage/floatingPage';
-// import BookmarkOutlinedIcon from '@mui/icons-material/BookmarkOutlined';
+import { Route, Routes } from 'react-router-dom';
+import BkmrkPage from './pages/bkmrkPage/bkmrkPage';
+import DetailsPage from './pages/detailsPage/detailsPage';
+
+
 
 
 function App() {
@@ -18,12 +20,13 @@ function App() {
   return (
     <div className="App">
       <Navbar setSearchedPoke={setSearchedPoke} setLoading={setLoading} setHasSearched={setHasSearched}/>
-      {/* <FloatingPage searchedPoke={searchedPoke} loading={loading}/> */}
-      {/* {hasSearched ?  */}
-        {/* <FloatingPage searchedPoke={searchedPoke} loading={loading}/> : */}
-        {/* <ListPage/> */}
-        <ListPage searchedPoke={searchedPoke} loading={loading} hasSearched={hasSearched} setHasSearched={setHasSearched}/>
-      {/* } */}
+      {/* <ListPage searchedPoke={searchedPoke} loading={loading} hasSearched={hasSearched} setHasSearched={setHasSearched}/> */}
+
+      <Routes>
+        <Route path='/' element={<ListPage searchedPoke={searchedPoke} loading={loading} hasSearched={hasSearched} setHasSearched={setHasSearched}/>}/>
+        <Route path='pokemon/:pokeID' element={<DetailsPage/>}/>
+        <Route path='bookmarked' element={<BkmrkPage/>}/>
+      </Routes>
     </div>
   );
 }

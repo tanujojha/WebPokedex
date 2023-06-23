@@ -1,0 +1,129 @@
+.detailsPage{
+    background-color: #1d212b;
+    color: white;
+    width: 80%;
+    margin: auto;
+    text-transform: capitalize;
+    padding: 50px 10px;
+}
+
+.dppokenamediv{
+    display: flex;
+    justify-content: space-between;
+    background-color: #2c303b;
+    padding: 5px;
+}
+
+.dppokename{
+    /* padding: 5px; */
+    text-align: center;
+}
+
+#bookmarkicon{
+    font-size: 30px;
+    margin: 10px 5px;
+    cursor: pointer;
+}
+
+.dptop{
+/* display: flex; */
+
+}
+
+.dpimgdiv{
+    padding: 5px;
+}
+
+.dpimg{
+    width: 100%;    
+}
+
+.dpspecsdiv{
+    padding: 30px 50px;
+}
+
+.dptyperankdiv{
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.dptype{
+    display: flex;
+    gap: 35px;
+    list-style: none;
+    padding: 0;
+    font-size: 1.5rem;
+}
+
+.dprank{
+    font-size: 1.5rem;
+    background-color: rgb(20, 28, 35);
+    padding: 5px;
+    border-radius: 50%;
+    border: 2px solid gray;
+}
+
+.dpstatsdiv{
+    margin-top: 10px;
+}
+
+.dpstatdiv{
+    display: flex;
+    gap: 5px;
+    padding: 7px 15px;
+
+}
+
+.dpstat{
+    width: 40%;
+    text-align: left;
+    /* padding: 7px; */
+}
+
+
+
+/* PROFILE PART */
+
+.dpprofilediv{
+    margin-top: 20px;
+    padding: 30px 30px;
+    /* width: 80%; */
+    /* margin: auto; */
+}
+
+.dprofile{
+    text-align: left;
+    background-color: #2c303b;
+    padding-left: 5px;
+    width: 90%;
+    margin: auto;
+}
+
+.dpprofilelistdiv{
+    display: flex;
+    justify-content: space-evenly;
+    gap: 30px;
+    flex-wrap: wrap;
+    width: 90%;
+    margin: auto;
+    padding: 40px 10px;
+}
+
+.dpprofilelist{
+    display: flex;
+    gap: 10px;
+    /* margin-top: 20px; */
+    /* border: 2px solid red; */
+    background-color: rgb(60, 84, 95);
+    padding: 7px;
+    border-radius: 10px;
+}
+
+.dpprofilelist > strong{
+    
+}
+
+.dpprofilelist > span{
+    /* width: ; */
+}
