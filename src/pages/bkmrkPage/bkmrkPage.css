@@ -1,3 +1,17 @@
 .bkmrkPage{
-    background-color: red;
+    margin-top: 20px;
+    color: white;
+}
+
+.bkmrkPage > h1{
+    background-color: #2c303b;
+    padding: 5px;
+}
+
+.bmppokelistdiv{
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 10px;
 }

@@ -6,12 +6,13 @@ import BookmarkOutlinedIcon from '@mui/icons-material/BookmarkOutlined';
 // import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 // import { Link } from 'react-router-dom';
 
-function DetailsPage() {
+function DetailsPage({setFavouritedPokes}) {
 
   const {pokeID} = useParams();
-  const [pokemon, setPokemon] = useState({});
-  const [specieDetails, setSpecieDetails] = useState({});
-  const [loading, setLoading] = useState(true);
+  const [pokemon, setPokemon] = useState({});   // holds pokemon details
+  const [specieDetails, setSpecieDetails] = useState({});   // holds specie details
+  const [loading, setLoading] = useState(true);   // checks loading status
+  const [isFav, setIsFav] = useState(false)
   
   async function fetchPokeDetails(){
     const pokeUrl = `https://pokeapi.co/api/v2/pokemon/${pokeID}/`;
@@ -38,14 +39,31 @@ function DetailsPage() {
     };
   }
 
-  const handleBookmark = ()=>{
-    localStorage.setItem("id", pokemon.id)
+  const handleFav = ()=>{
+    setIsFav((prev)=> !prev)
   }
 
   
   useEffect(()=>{
-    fetchPokeDetails()
-  }, [])
+    fetchPokeDetails();
+    const favIds = JSON.parse(localStorage.getItem("favpokes"))
+    if(favIds && favIds.includes(pokemon.id)){
+      setIsFav(true)
+    }else{
+      setIsFav(false)
+    }
+  }, [pokemon.id])
+
+
+  useEffect(() => {
+    setFavouritedPokes((prev) => {
+      if (isFav) {
+        return [...prev, pokemon.id];
+      } else {
+        return prev.filter((id) => id !== pokemon.id);
+      }
+    });
+  }, [isFav]);
   
   return (
     loading ? <p>Loading...</p> :
@@ -53,7 +71,7 @@ function DetailsPage() {
       <div className='detailsPage'>
         <div className='dppokenamediv'>
           <h1 className='dppokename'>{pokemon.name}</h1>
-          <BookmarkOutlinedIcon onClick={handleBookmark} id='bookmarkicon'/>
+          <BookmarkOutlinedIcon style={{color: isFav ? "red" : "white"}} onClick={handleFav} id='bookmarkicon'/>
         </div>
         <div className='dptop row'>
           <div className='dpimgdiv col-lg-4 col-sm-12 col-12'>
