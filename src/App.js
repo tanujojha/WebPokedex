@@ -5,7 +5,7 @@ import ListPage from './pages/listPage/listPage';
 import { Route, Routes } from 'react-router-dom';
 import BkmrkPage from './pages/bkmrkPage/bkmrkPage';
 import DetailsPage from './pages/detailsPage/detailsPage';
-
+import FloatingPage from './pages/floatingPage/floatingPage';
 
 
 function App() {
@@ -23,7 +23,8 @@ function App() {
   return (
     <div className="App">
       <Navbar setSearchedPoke={setSearchedPoke} setLoading={setLoading} setHasSearched={setHasSearched}/>
-      {/* <ListPage searchedPoke={searchedPoke} loading={loading} hasSearched={hasSearched} setHasSearched={setHasSearched}/> */}
+      
+      {hasSearched ? <FloatingPage searchedPoke={searchedPoke} loading={loading} setHasSearched={setHasSearched}/> : null}
 
       <Routes>
         <Route path='/' element={<ListPage searchedPoke={searchedPoke} loading={loading} hasSearched={hasSearched} setHasSearched={setHasSearched}/>}/>

@@ -13,10 +13,10 @@ function Navbar({setSearchedPoke, setLoading, setHasSearched}) {
 
     const handleSubmit = (e)=>{
         e.preventDefault()
+        setPokename("")
         const pokeUrl = `https://pokeapi.co/api/v2/pokemon/${pokename}`
         axios.get(pokeUrl)
         .then((res)=>{
-            console.log(res.data);
             setSearchedPoke(res.data)
             setLoading(false)
             setHasSearched(true)
@@ -36,7 +36,7 @@ function Navbar({setSearchedPoke, setLoading, setHasSearched}) {
             </button>
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
                 <form className="d-flex" role="search" onSubmit={handleSubmit}>
-                    <input onChange={handleChange} className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
+                    <input value={pokename} onChange={handleChange} className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
                     <button className="btn btn-outline-success" type="submit">Search</button>
                 </form>
                 <ul className="navbar-nav me-auto mb-2 mb-lg-0">

@@ -18,10 +18,10 @@ function ListCard({poke}) {
         .catch((err)=>{
             console.log(err);
         })
-    }, [])
+    }, [PokemonUrl])
 
   return (
-    <Link to={`/pokemon/${pokemon.id}`}>
+    <Link to={`/pokemon/${pokemon.id}`} className='link'>
         <div className='listcard'>
             <div className='cardimgdiv'>
                 <img className='cardimg' src={loading ? "#" : pokemon.sprites.front_default} alt="..some pokemon.."/>

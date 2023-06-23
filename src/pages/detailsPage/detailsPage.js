@@ -3,8 +3,7 @@ import "./detailsPage.css";
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import BookmarkOutlinedIcon from '@mui/icons-material/BookmarkOutlined';
-// import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-// import { Link } from 'react-router-dom';
+
 
 function DetailsPage({setFavouritedPokes}) {
 
@@ -14,20 +13,25 @@ function DetailsPage({setFavouritedPokes}) {
   const [loading, setLoading] = useState(true);   // checks loading status
   const [isFav, setIsFav] = useState(false)
   
-  async function fetchPokeDetails(){
-    const pokeUrl = `https://pokeapi.co/api/v2/pokemon/${pokeID}/`;
-    const pokeSpcUrl = `https://pokeapi.co/api/v2/pokemon-species/${pokeID}/`;
-    
-    const res = await axios.get(pokeUrl);
-    // console.log(res.data);
-    setPokemon(res.data);
-    
-    const spcRes = await axios.get(pokeSpcUrl);
-    // console.log(spcRes);
-    setSpecieDetails(spcRes.data)
-    setLoading(false)
 
+  async function fetchPokeDetails() {
+    try {
+      const pokeUrl = `https://pokeapi.co/api/v2/pokemon/${pokeID}/`;
+      const pokeSpcUrl = `https://pokeapi.co/api/v2/pokemon-species/${pokeID}/`;
+  
+      const res = await axios.get(pokeUrl);
+      setPokemon(res.data);
+  
+      const spcRes = await axios.get(pokeSpcUrl);
+      setSpecieDetails(spcRes.data);
+  
+      setLoading(false);
+    } catch (error) {
+      console.log("Error fetching Pokémon details:", error);
+      setLoading(false); 
+    }
   }
+  
 
   function convertUnits(weightInHectograms, heightInDecimeters) {
     const weightInKilograms = weightInHectograms / 10;
@@ -58,12 +62,19 @@ function DetailsPage({setFavouritedPokes}) {
   useEffect(() => {
     setFavouritedPokes((prev) => {
       if (isFav) {
-        return [...prev, pokemon.id];
+        // Add the pokemon.id to the array if  not already included
+        if (!prev.includes(pokemon.id)) {
+          return [...prev, pokemon.id];
+        }
       } else {
+        // Remove the pokemon.id from the array if it exists
         return prev.filter((id) => id !== pokemon.id);
       }
+      // Return previous state if no changes are made
+      return prev;
     });
   }, [isFav]);
+  
   
   return (
     loading ? <p>Loading...</p> :
@@ -81,7 +92,7 @@ function DetailsPage({setFavouritedPokes}) {
             <div className='dptyperankdiv'>
               <ul className='dptype'>
                 {
-                  pokemon.types.map((type, index)=> <li>{type.type.name}</li>)
+                  pokemon.types.map((type, index)=> <li key={index}>{type.type.name}</li>)
                 }
               </ul>
               <h5 className='dprank'>#{pokemon.id}</h5>
@@ -90,7 +101,7 @@ function DetailsPage({setFavouritedPokes}) {
               {
                 pokemon.stats.map((stat, index)=>{
                   return (
-                    <div className='dpstatdiv'>
+                    <div className='dpstatdiv' key={index}>
                       <span className='dpstat'>{stat.stat.name}</span>
                       <div style={{width: "90%"}} className="progress" role="progressbar" aria-label="Example with label" aria-valuenow={stat.base_stat} aria-valuemin="0" aria-valuemax="100">
                         <div className="progress-bar" style={{width: stat.base_stat}}>{stat.base_stat}</div>

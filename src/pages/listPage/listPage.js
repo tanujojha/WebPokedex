@@ -3,10 +3,9 @@ import "./listPage.css";
 import ListCard from '../../components/listCard/listCard';
 import axios from "axios";
 import InfiniteScroll from 'react-infinite-scroll-component';
-import FloatingPage from '../floatingPage/floatingPage';
 
 
-function ListPage({searchedPoke, loading, hasSearched, setHasSearched}) {
+function ListPage({hasSearched}) {
 
     const dissableScrollStyle = {
         overflowY: "hidden",
@@ -38,7 +37,6 @@ function ListPage({searchedPoke, loading, hasSearched, setHasSearched}) {
   return (
 
     <div style={hasSearched ? dissableScrollStyle : null}>
-        {hasSearched ? <FloatingPage searchedPoke={searchedPoke} loading={loading} setHasSearched={setHasSearched}/> : null}
 
         <InfiniteScroll 
             dataLength={pokemons.length}
